@@ -1,0 +1,166 @@
+{
+  "0": {
+    "Sheet1": [
+      {
+        "username": "学号/工号",
+        "name": "姓名",
+        "phoneNum": "手机号",
+        "school": "学校",
+        "college": "系别",
+        "major": "专业",
+        "className": "班级",
+        "role": "角色"
+      },
+      {
+        "username": "admin",
+        "name": "管理员",
+        "phoneNum": "",
+        "school": "",
+        "college": "",
+        "major": "",
+        "className": "",
+        "role": "ADMIN"
+      },
+      {
+        "username": "user",
+        "name": "用户",
+        "phoneNum": "",
+        "school": "",
+        "college": "",
+        "major": "",
+        "className": "",
+        "role": "USER"
+      },
+      {
+        "username": "user1",
+        "name": "用户1",
+        "phoneNum": 13033520121,
+        "school": "南京晓庄学院",
+        "college": "信工院",
+        "major": "软件工程",
+        "className": "16软转2班",
+        "role": "USER"
+      },
+      {
+        "username": "user4",
+        "name": "用户4",
+        "phoneNum": 13033520121,
+        "school": "南京晓庄学院",
+        "college": "信工院",
+        "major": "软件工程",
+        "className": "16软转2班",
+        "role": "USER"
+      },
+      {
+        "username": "user5",
+        "name": "用户5",
+        "phoneNum": 13033520121,
+        "school": "南京晓庄学院",
+        "college": "信工院",
+        "major": "软件工程",
+        "className": "16软转2班",
+        "role": "USER"
+      },
+      {
+        "username": "user6",
+        "name": "用户6",
+        "phoneNum": 13033520121,
+        "school": "南京晓庄学院",
+        "college": "信工院",
+        "major": "软件工程",
+        "className": "16软转2班",
+        "role": "USER"
+      },
+      {
+        "username": "user7",
+        "name": "用户7",
+        "phoneNum": 13033520121,
+        "school": "南京晓庄学院",
+        "college": "信工院",
+        "major": "软件工程",
+        "className": "16软转2班",
+        "role": "USER"
+      },
+      {
+        "username": "user8",
+        "name": "用户8",
+        "phoneNum": 13033520121,
+        "school": "南京晓庄学院",
+        "college": "信工院",
+        "major": "软件工程",
+        "className": "16软转2班",
+        "role": "USER"
+      },
+      {
+        "username": "test",
+        "name": "test",
+        "phoneNum": "test",
+        "school": "test",
+        "college": "test",
+        "major": "",
+        "className": "",
+        "role": "test"
+      },
+      {
+        "username": "test",
+        "name": "test",
+        "phoneNum": "test",
+        "school": "test",
+        "college": "test",
+        "major": "",
+        "className": "",
+        "role": "test"
+      },
+      {
+        "username": "test",
+        "name": "test",
+        "phoneNum": "test",
+        "school": "test",
+        "college": "test",
+        "major": "",
+        "className": "",
+        "role": "test"
+      },
+      {
+        "username": "test",
+        "name": "test",
+        "phoneNum": "test",
+        "school": "test",
+        "college": "test",
+        "major": "",
+        "className": "",
+        "role": "test"
+      },
+      {
+        "username": "user8",
+        "name": "用户8",
+        "phoneNum": 13033520121,
+        "school": "南京晓庄学院",
+        "college": "信工院",
+        "major": "软件工程",
+        "className": "16软转2班",
+        "role": "USER"
+      },
+      {
+        "username": "user8",
+        "name": "用户8",
+        "phoneNum": 13033520121,
+        "school": "南京晓庄学院",
+        "college": "信工院",
+        "major": "软件工程",
+        "className": "16软转2班",
+        "role": "USER"
+      },
+      {
+        "username": "user8",
+        "name": "用户8",
+        "phoneNum": 13033520121,
+        "school": "南京晓庄学院",
+        "college": "信工院",
+        "major": "软件工程",
+        "className": "16软转2班",
+        "role": "USER"
+      }
+    ]
+  }
+}
