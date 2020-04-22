@@ -59,28 +59,22 @@
 
         //富文本编辑器
         var editor = new wangEditor('#editor');
-        editor.customConfig.uploadImgServer = "../api/upload.json";
-        editor.customConfig.uploadFileName = 'image';
-        editor.customConfig.pasteFilterStyle = false;
-        editor.customConfig.uploadImgMaxLength = 5;
-        editor.customConfig.uploadImgHooks = {
-            // 上传超时
-            timeout: function (xhr, editor) {
-                layer.msg('上传超时！')
-            },
-            // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
-            customInsert: function (insertImg, result, editor) {
-                console.log(result);
-                if (result.code == 1) {
-                    var url = result.data.url;
-                    url.forEach(function (e) {
-                        insertImg(e);
-                    })
-                } else {
-                    layer.msg(result.msg);
-                }
-            }
-        };
+        editor.customConfig.menus = [
+            'head',  // 标题
+            'bold',  // 粗体
+            'fontSize',  // 字号
+            'fontName',  // 字体
+            'italic',  // 斜体
+            'underline',  // 下划线
+            'strikeThrough',  // 删除线
+            'foreColor',  // 文字颜色
+            'backColor',  // 背景颜色
+            'link',  // 插入链接
+            'justify',  // 对齐方式
+            'quote',  // 引用
+            'undo',  // 撤销
+            'redo'  // 重复
+        ];
         editor.customConfig.customAlert = function (info) {
             layer.msg(info);
         };
