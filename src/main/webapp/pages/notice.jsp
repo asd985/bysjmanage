@@ -49,20 +49,13 @@
             parent.layer.open({
                 type: 1,
                 title: '系统公告'+'<span style="float: right;right: 1px;font-size: 12px;color: #b1b3b9;margin-top: 1px">'+noticeTime+'</span>',
-                area: '300px;',
+                area: ['700px'],
                 shade: 0.8,
                 id: 'layuimini-notice',
-                btn: ['查看', '取消'],
+                btn: [ '关闭'],
                 btnAlign: 'c',
                 moveType: 1,
-                content:html,
-                success: function (layero) {
-                    var btn = layero.find('.layui-layer-btn');
-                    btn.find('.layui-layer-btn0').attr({
-                        href: 'https://gitee.com/zhongshaofa/layuimini',
-                        target: '_blank'
-                    });
-                }
+                content:html
             });
             //obj.del(); //删除当前行
             //obj.update(fields) //修改当前行数据

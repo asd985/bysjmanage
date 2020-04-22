@@ -136,11 +136,10 @@ pageEncoding="UTF-8"%>
 <script src="lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="js/lay-config.js?v=2.0.0" charset="utf-8"></script>
 <script>
-    layui.use(['jquery', 'layer', 'miniAdmin', 'miniTongji'], function () {
+    layui.use(['jquery', 'layer', 'miniAdmin'], function () {
         var $ = layui.jquery,
             layer = layui.layer,
-            miniAdmin = layui.miniAdmin,
-            miniTongji = layui.miniTongji;
+            miniAdmin = layui.miniAdmin;
 
         var options = {
             //iniUrl: "api/init.json",    // 初始化接口
@@ -152,19 +151,9 @@ pageEncoding="UTF-8"%>
             menuChildOpen: false,       // 是否默认展开菜单
             loadingTime: 1,             // 初始化加载时间
             pageAnim: true,             // iframe窗口动画
-            maxTabNum: 20,              // 最大的tab打开数量
+            maxTabNum: 10;              // 最大的tab打开数量
         };
         miniAdmin.render(options);
-
-        // 百度统计代码，只统计指定域名
-        miniTongji.render({
-            specific: true,
-            domains: [
-                '99php.cn',
-                'layuimini.99php.cn',
-                'layuimini-onepage.99php.cn',
-            ],
-        });
 
         $('.login-out').on("click", function () {
             layer.msg('退出登录成功', function () {

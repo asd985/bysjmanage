@@ -20,7 +20,7 @@
     <div class="layui-form-item layui-hide">
         <label class="layui-form-label required">隐藏id</label>
         <div class="layui-input-block">
-            <input type="text" name="id" lay-verify="required" lay-reqtext="" placeholder="" value="${paper.pid}" class="layui-input">
+            <input type="text" name="id" lay-verify="required" lay-reqtext="" placeholder="" value="${notice.id}" class="layui-input">
         </div>
     </div>
 
@@ -31,10 +31,12 @@
         </div>
     </div>
 
-    <div class="layui-form-item layui-form-text">
+    <div class="layui-form-item">
         <label class="layui-form-label">内容</label>
         <div class="layui-input-block">
-            <textarea name="content" lay-verify="required" lay-reqtext="内容不能为空" placeholder="请输入内容" class="layui-textarea" >${notice.content}</textarea>
+            <div id="editor" name="content"  style="margin: 50px 0 50px 0">
+                ${notice.content}
+            </div>
         </div>
     </div>
 
@@ -47,14 +49,47 @@
 </div>
 </div>
 <script src="${pageContext.request.contextPath}/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script>
-    layui.use(['form'], function () {
+    layui.use(['form','wangEditor'], function () {
         var form = layui.form,
             layer = layui.layer,
-            $ = layui.$;
+            $ = layui.$,
+            wangEditor = layui.wangEditor;
+
+        //富文本编辑器
+        var editor = new wangEditor('#editor');
+        editor.customConfig.uploadImgServer = "../api/upload.json";
+        editor.customConfig.uploadFileName = 'image';
+        editor.customConfig.pasteFilterStyle = false;
+        editor.customConfig.uploadImgMaxLength = 5;
+        editor.customConfig.uploadImgHooks = {
+            // 上传超时
+            timeout: function (xhr, editor) {
+                layer.msg('上传超时！')
+            },
+            // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
+            customInsert: function (insertImg, result, editor) {
+                console.log(result);
+                if (result.code == 1) {
+                    var url = result.data.url;
+                    url.forEach(function (e) {
+                        insertImg(e);
+                    })
+                } else {
+                    layer.msg(result.msg);
+                }
+            }
+        };
+        editor.customConfig.customAlert = function (info) {
+            layer.msg(info);
+        };
+        editor.create();
 
         //监听提交
         form.on('submit(saveBtn)', function (data) {
+            // 读取 editor的html
+            data.field.content=editor.txt.html();
 
             $.ajax({
                 type:"POST",
