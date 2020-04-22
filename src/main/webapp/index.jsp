@@ -68,7 +68,7 @@ pageEncoding="UTF-8"%>
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" layuimini-content-href="${pageContext.request.contextPath}/user/userSetting.do" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
+                            <a href="javascript:;" layuimini-content-href="${pageContext.request.contextPath}/user/userSetting.do" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
                         </dd>
                         <dd>
                             <a href="javascript:;" layuimini-content-href="${pageContext.request.contextPath}/pages/user-password.jsp" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
@@ -136,7 +136,7 @@ pageEncoding="UTF-8"%>
 <script src="lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="js/lay-config.js?v=2.0.0" charset="utf-8"></script>
 <script>
-    layui.use(['jquery', 'layer', 'miniAdmin'], function () {
+    layui.use(['jquery', 'layer', 'miniAdmin', 'miniTongji'], function () {
         var $ = layui.jquery,
             layer = layui.layer,
             miniAdmin = layui.miniAdmin;
@@ -151,7 +151,7 @@ pageEncoding="UTF-8"%>
             menuChildOpen: false,       // 是否默认展开菜单
             loadingTime: 1,             // 初始化加载时间
             pageAnim: true,             // iframe窗口动画
-            maxTabNum: 10;              // 最大的tab打开数量
+            maxTabNum: 10              // 最大的tab打开数量
         };
         miniAdmin.render(options);
 

@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="cn.njxzc.bysj.domain.StatusCount" %>
 <%@ page import="java.util.Map" %> 
 <html>
@@ -167,7 +168,7 @@
                                     <div class="layuimini-notice">
                                         <div class="layuimini-notice-title">标  题：${notice.title}</div>
                                         <div class="layuimini-notice-username">发布者：${notice.name}</div>
-                                        <div class="layuimini-notice-extra">${notice.createTime}</div>
+                                        <div class="layuimini-notice-extra"><fmt:formatDate value="${notice.createTime}" pattern="yyyy年 MM月 dd日 HH:mm"/></div>
                                         <div class="layuimini-notice-content layui-hide">
                                             ${notice.content}
                                         </div>
@@ -186,6 +187,7 @@
 <script>
     layui.use(['layer', 'miniTab','echarts'], function () {
         var $ = layui.jquery,
+            util = layui.util,
             miniTab = layui.miniTab;
 
         miniTab.listen();

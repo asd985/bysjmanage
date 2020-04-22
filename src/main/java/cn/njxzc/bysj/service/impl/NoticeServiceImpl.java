@@ -83,7 +83,7 @@ public class NoticeServiceImpl implements INoticeService {
         noticeDao.updateById(notice);
         template.opsForHash().delete("Notice",nid);
         template.opsForZSet().removeRangeByScore("Notices",notice.getId(),notice.getId());
-        template.opsForZSet().add("Notices", notice, notice.getId());
+        template.opsForZSet().add("Notices", noticeDao.findById(notice.getId()), notice.getId());
     }
 
     //删除
