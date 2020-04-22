@@ -38,9 +38,13 @@ public class ConfigController {
             //model.addAttribute("name",user.getUsername());
             String auth = user.getAuthorities().toArray()[0].toString();
             if (auth.equals("ROLE_ADMIN"))
-                return "redirect:/api/init.json";
+                return "redirect:/api/init_admin.json";
+            else if (auth.equals("ROLE_TEACHER"))
+                return "redirect:/api/init_tea.json";
+            else if (auth.equals("ROLE_STUDENT"))
+                return "redirect:/api/init_stu.json";
             else
-                return "redirect:/api/init.json";
+                return null;
         }
     }
 

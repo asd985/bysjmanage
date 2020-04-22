@@ -24,6 +24,7 @@ public class UserInfo {
     private int status;         //状态0 未开启 1 开启
     private String statusStr;
     private String role;
+    private String remark;
 
     public Integer getId() {
         return id;
@@ -121,4 +122,11 @@ public class UserInfo {
         this.role = role;
     }
 
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 }

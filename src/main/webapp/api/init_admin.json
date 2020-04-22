@@ -205,6 +205,26 @@
       ]
     },
     {
+      "title": "个人信息",
+      "icon": "fa fa-sticky-note-o",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "修改密码",
+          "href": "pages/user-password.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "修改资料",
+          "href": "user/userSetting.do",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        }
+      ]
+    },
+    {
       "title": "常规管理",
       "icon": "fa fa-address-book",
       "href": "",

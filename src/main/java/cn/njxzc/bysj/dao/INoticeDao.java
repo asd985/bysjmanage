@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface INoticeDao {
 
-    @Select("select * from notice")
+    @Select("select * from notice order by id desc")
     @Results({
             @Result(id = true, property = "id", column = "id"),
             @Result(property = "username", column = "username"),

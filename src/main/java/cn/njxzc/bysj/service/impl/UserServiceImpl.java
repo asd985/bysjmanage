@@ -68,6 +68,11 @@ public class UserServiceImpl implements IUserService {
         userDao.setPassword(user);
     }
 
+    @Override
+    public void update(UserInfo user) {
+        userDao.update(user);
+    }
+
     //SpringSecurity框架认证
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

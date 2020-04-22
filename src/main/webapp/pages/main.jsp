@@ -158,7 +158,7 @@
                     </security:authorize>
                     <div class="layui-col-md12">
                         <div class="layui-card">
-                            <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>系统公告</div>
+                            <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>最新公告</div>
                             <div class="layui-card-body layui-text" id="notice">
                                 <c:if test="${empty noticeList}">
                                     当前没有任何公告！

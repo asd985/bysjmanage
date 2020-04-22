@@ -8,4 +8,8 @@ public class BcryptPasswordEncoderUtils {
     public static String encodePassword(String password){
         return bCryptPasswordEncoder.encode(password);
     }
+
+    public static Boolean matches(CharSequence rawPassword, String encodedPassword){
+        return bCryptPasswordEncoder.matches(rawPassword, encodedPassword);
+    }
 }

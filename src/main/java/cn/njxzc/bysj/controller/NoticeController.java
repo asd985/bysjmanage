@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Controller
@@ -50,6 +51,7 @@ public class NoticeController {
     }
 
     //新建
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/save.do")
     @ResponseBody
     public String save(@RequestBody Notice notice) throws Exception{
@@ -62,6 +64,7 @@ public class NoticeController {
     }
 
     //跳转编辑页面
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/findById.do")
     public ModelAndView findEditById(Integer id) throws Exception{
         ModelAndView mv = new ModelAndView();
@@ -72,6 +75,7 @@ public class NoticeController {
     }
 
     //根据id修改
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/updateById.do")
     @ResponseBody
     public String updateById(@RequestBody Notice notice) throws Exception{
@@ -80,6 +84,7 @@ public class NoticeController {
     }
 
     //根据pid删除
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/deleteById.do")
     @ResponseBody
     public String deleteById(Integer id) throws Exception{

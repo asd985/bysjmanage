@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.net.URLDecoder;
@@ -60,6 +61,7 @@ public class PaperEndController {
 
 
     //导出
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/export.do")
     @ResponseBody
     public TableResponse export() throws Exception{
@@ -69,6 +71,7 @@ public class PaperEndController {
     }
 
     //admin任务书搜索
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/search.do")
     @ResponseBody
     public TableResponse search(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "15") Integer limit ,String searchParams) throws Exception{

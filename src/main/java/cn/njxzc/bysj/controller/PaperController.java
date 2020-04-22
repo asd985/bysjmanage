@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
@@ -62,6 +63,7 @@ public class PaperController {
     }
 
     //查找所有未审批的
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/findAllReview.do")
     @ResponseBody
     public TableResponse findAllReview(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "10") Integer limit) throws Exception{
@@ -72,6 +74,7 @@ public class PaperController {
     }
 
     //学生选题 查找所有已审核的
+    @RolesAllowed({"STUDENT"})
     @RequestMapping("/stuFindAllReviewed.do")
     @ResponseBody
     public TableResponse stuFindAllReviewed(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "10") Integer limit) throws Exception{
@@ -81,6 +84,7 @@ public class PaperController {
         return response;
     }
     //教师选题 查找所有已审核的
+    @RolesAllowed({"TEACHER"})
     @RequestMapping("/teaFindAllReviewed.do")
     @ResponseBody
     public TableResponse teaFindAllReviewed(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "10") Integer limit) throws Exception{
@@ -182,6 +186,7 @@ public class PaperController {
     }
 
     //修改课题状态
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/changeStatus.do")
     @ResponseBody
     public String changeStatus(Integer pid) throws Exception{
@@ -201,6 +206,7 @@ public class PaperController {
     }
 
     //批量审批
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/reviewPapers.do")
     @ResponseBody
     public String reviewPapers(@RequestBody Paper[] papers) throws Exception{
@@ -212,6 +218,7 @@ public class PaperController {
     }
 
     //搜索
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/search.do")
     @ResponseBody
     public TableResponse search(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "15") Integer limit ,String searchParams) throws Exception{
@@ -231,6 +238,7 @@ public class PaperController {
     }
 
     //学生选题搜索
+    @RolesAllowed({"STUDENT"})
     @RequestMapping("/selectStudentSearch.do")
     @ResponseBody
     public TableResponse selectStudentSearch(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "15") Integer limit ,String searchParams) throws Exception{
@@ -248,6 +256,7 @@ public class PaperController {
     }
 
     //教师选题搜索
+    @RolesAllowed({"TEACHER"})
     @RequestMapping("/selectTeacherSearch.do")
     @ResponseBody
     public TableResponse selectTeacherSearch(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "15") Integer limit ,String searchParams) throws Exception{

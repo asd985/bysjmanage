@@ -7,6 +7,9 @@ import cn.njxzc.bysj.service.IUserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.net.URLDecoder;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -26,6 +31,7 @@ public class UserController {
     private IUserService userService;
 
     //查询所有用户
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/findAll.do")
     @ResponseBody
     public TableResponse findAll(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "10") Integer limit) throws Exception{
@@ -36,6 +42,7 @@ public class UserController {
     }
 
     //修改会员状态
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/changeStatus.do")
     @ResponseBody
     public String changeStatus(String username) throws Exception{
@@ -44,10 +51,62 @@ public class UserController {
     }
 
     //管理员根据username修改密码
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/setPassword.do")
     @ResponseBody
     public String setPassword(@RequestBody UserInfo user) throws Exception{
         userService.setPassword(user);
+        return "success";
+    }
+
+    //修改密码
+    @RequestMapping("/updatePassword.do")
+    @ResponseBody
+    public TableResponse updatePassword(@RequestBody Map<String,String> map) throws Exception{
+        TableResponse tableResponse = null;
+        String oldPassword = map.get("oldPassword");
+        String newPassword = map.get("newPassword");
+        String againPassword = map.get("againPassword");
+        SecurityContext context = SecurityContextHolder.getContext();
+        User user = (User) context.getAuthentication().getPrincipal();
+        if(!newPassword.equals(againPassword)){
+            tableResponse = new TableResponse(0, "两次输入密码不一致");
+            return tableResponse;
+        }
+        UserInfo userInfo = userService.findByUsername(user.getUsername());
+        if(!BcryptPasswordEncoderUtils.matches(oldPassword, userInfo.getPassword())){
+            tableResponse = new TableResponse(0, "旧密码错误");
+            return tableResponse;
+        }
+        userInfo.setPassword(newPassword);
+        userService.setPassword(userInfo);
+        tableResponse = new TableResponse(0, "修改成功,请重新登录");
+        return tableResponse;
+    }
+
+    //跳转本人资料修改页面
+    @RequestMapping("/userSetting.do")
+    public ModelAndView userSetting() throws Exception{
+        ModelAndView mv = new ModelAndView();
+        SecurityContext context = SecurityContextHolder.getContext();
+        User user = (User) context.getAuthentication().getPrincipal();
+        UserInfo userInfo = userService.findByUsername(user.getUsername());
+        mv.addObject("user",userInfo);
+        mv.setViewName("user-setting");
+        return mv;
+    }
+
+    @RequestMapping("/update.do")
+    @ResponseBody
+    public String update(@RequestBody UserInfo user) throws Exception{
+        UserInfo update = new UserInfo();
+        SecurityContext context = SecurityContextHolder.getContext();
+        User contextUser = (User) context.getAuthentication().getPrincipal();
+        update.setUsername(contextUser.getUsername());
+        //只能修改手机号和备注
+        update.setPhoneNum(user.getPhoneNum());
+        update.setRemark(user.getRemark());
+        userService.update(user);
         return "success";
     }
 
@@ -62,6 +121,7 @@ public class UserController {
     }
 
     //根据id修改
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/updateByUsername.do")
     @ResponseBody
     public String updateById(@RequestBody UserInfo user) throws Exception{
@@ -72,6 +132,7 @@ public class UserController {
     }
 
     //根据id删除
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/deleteByUsername.do")
     @ResponseBody
     public String deleteById(String username) throws Exception{
@@ -80,6 +141,7 @@ public class UserController {
     }
 
     //新建用户
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/save.do")
     @ResponseBody
     public String save(@RequestBody UserInfo user) throws Exception{
@@ -89,6 +151,7 @@ public class UserController {
     }
 
     //批量删除
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/deleteUsers.do")
     @ResponseBody
     public String deleteUsers(@RequestBody UserInfo[] users) throws Exception{
@@ -100,12 +163,14 @@ public class UserController {
     }
 
     //批量导入
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/import.do")
     @ResponseBody
     public String importUsers(@RequestBody UserInfo[] users) throws Exception{
         for (UserInfo user : users) {
             if("学号/工号".equals(user.getUsername()))  //跳过表格第一行
                 continue;
+            user.setPassword(BcryptPasswordEncoderUtils.encodePassword(user.getPassword()));
             userService.save(user);
         }
         return "success";

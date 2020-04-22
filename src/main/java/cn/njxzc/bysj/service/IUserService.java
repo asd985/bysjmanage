@@ -23,4 +23,6 @@ public interface IUserService extends UserDetailsService {
     void changeStatus(String username) throws Exception;
 
     void setPassword(UserInfo user) throws Exception;
+
+    void update(UserInfo user);
 }

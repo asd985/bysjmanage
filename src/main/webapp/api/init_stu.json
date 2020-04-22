@@ -1,0 +1,105 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "config/main.do"
+  },
+  "logoInfo": {
+    "title": "南京晓庄学院",
+    "image": "images/logo1.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "信息管理",
+      "icon": "fa fa-commenting-o",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "公告",
+          "href": "pages/notice.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "选题管理",
+      "icon": "fa fa-file-text",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "我的课题",
+          "href": "pages/paper-mine.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "选题列表",
+          "href": "pages/paper-select-student.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "过程管理",
+      "icon": "fa fa-edit",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "任务书",
+          "href": "pages/process-task-student.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "开题报告",
+          "href": "pages/process-report-student.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "中期检查",
+          "href": "pages/process-check-student.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "论文初稿",
+          "href": "pages/process-paperfirst-student.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "论文终稿",
+          "href": "pages/process-paperend-student.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "个人信息",
+      "icon": "fa fa-sticky-note-o",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "修改密码",
+          "href": "pages/user-password.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "修改资料",
+          "href": "user/userSetting.do",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

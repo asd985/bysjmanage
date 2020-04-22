@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.net.URLDecoder;
@@ -36,6 +37,7 @@ public class ReportController {
     private IReportService reportService;
 
     //列表
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/findAll.do")
     @ResponseBody
     public TableResponse FindAll(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "10") Integer limit) throws Exception{
@@ -60,6 +62,7 @@ public class ReportController {
 
 
     //导出
+    @RolesAllowed({"ADMIN"})
     @RequestMapping("/export.do")
     @ResponseBody
     public TableResponse export() throws Exception{

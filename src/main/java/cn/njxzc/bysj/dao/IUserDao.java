@@ -45,4 +45,7 @@ public interface IUserDao {
     //管理员修改用户密码
     @Update("update user set password=#{password} where username=#{username}")
     void setPassword(UserInfo user) throws Exception;
+
+    @Update("update user set phoneNum=#{phoneNum}, remark=#{remark} where username=#{username}")
+    void update(UserInfo user);
 }

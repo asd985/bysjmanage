@@ -142,12 +142,6 @@
 						<input type="file" class="layui-btn layui-btn-primary" id="LAY-excel-import-excel" multiple="multiple">
 					</div>
 				</div>
-				<div class="layui-form-item">
-					<div class="layui-form-label"></div>
-					<div class="layui-form-block">
-						<p class="help-block" style="color: #f00;">高级浏览器可以在本页面上直接将文件拖入</p>
-					</div>
-				</div>
 
 			</div>
 		</div>
