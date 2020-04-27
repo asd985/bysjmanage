@@ -47,8 +47,8 @@
 
         <script type="text/html" id="userRole">
             {{d.role=='ADMIN'?'管理员':''}}
-            {{d.role=='STUDENT'?'教师':''}}
-            {{d.role=='TEACHER'?'学生':''}}
+            {{d.role=='STUDENT'?'学生':''}}
+            {{d.role=='TEACHER'?'教师':''}}
         </script>
 
         <script type="text/html" id="toolbarDemo">

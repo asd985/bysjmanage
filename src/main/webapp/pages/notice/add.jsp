@@ -33,10 +33,10 @@
             </div>
         </div>
     </div>
-    <div class="layui-form-item">
-        <div class="layui-input-block">
+    <div class="layui-form-item" style="text-align: center;">
+
             <button class="layui-btn" lay-submit lay-filter="saveBtn">确认保存</button>
-        </div>
+
     </div>
 </div>
 </div>

@@ -35,13 +35,7 @@
         },
         {
           "title": "进度查询",
-          "href": "user/findAll3",
-          "icon": "fa fa-circle-o",
-          "target": "_self"
-        },
-        {
-          "title": "日志查询",
-          "href": "page/setting.html",
+          "href": "pages/process-all-admin.jsp",
           "icon": "fa fa-circle-o",
           "target": "_self"
         }

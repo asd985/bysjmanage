@@ -2,6 +2,7 @@ package cn.njxzc.bysj.controller;
 
 import cn.njxzc.bysj.common.TableResponse;
 import cn.njxzc.bysj.domain.Paper;
+import cn.njxzc.bysj.domain.Process;
 import cn.njxzc.bysj.service.IPaperService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageInfo;
@@ -83,6 +84,7 @@ public class PaperController {
         TableResponse<List> response = new TableResponse<>(0, (int)pageInfo.getTotal(), pageInfo.getList());
         return response;
     }
+
     //教师选题 查找所有已审核的
     @RolesAllowed({"TEACHER"})
     @RequestMapping("/teaFindAllReviewed.do")
@@ -91,6 +93,27 @@ public class PaperController {
         List<Paper> paperList = paperService.teaFindAllReviewed(page,limit);
         PageInfo pageInfo = new PageInfo(paperList);
         TableResponse<List> response = new TableResponse<>(0, (int)pageInfo.getTotal(), pageInfo.getList());
+        return response;
+    }
+
+    //查看论文进程
+    @RolesAllowed({"ADMIN"})
+    @RequestMapping("/findProcess.do")
+    @ResponseBody
+    public TableResponse findProcess(@RequestParam(name="page",required = false) Integer page, @RequestParam(name = "limit",required = false) Integer limit) throws Exception{
+        List<Process> processList = paperService.findProcess(page,limit);
+        PageInfo pageInfo = new PageInfo(processList);
+        TableResponse<List> response = new TableResponse<>(0, (int)pageInfo.getTotal(), pageInfo.getList());
+        return response;
+    }
+
+    //导出论文进程
+    @RolesAllowed({"ADMIN"})
+    @RequestMapping("/exportProcess.do")
+    @ResponseBody
+    public TableResponse exportProcess() throws Exception{
+        List processList = paperService.exportProcess();
+        TableResponse<List> response = new TableResponse<>(0, processList);
         return response;
     }
 

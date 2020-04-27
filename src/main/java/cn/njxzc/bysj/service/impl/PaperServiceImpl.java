@@ -2,6 +2,7 @@ package cn.njxzc.bysj.service.impl;
 
 import cn.njxzc.bysj.dao.IPaperDao;
 import cn.njxzc.bysj.domain.Paper;
+import cn.njxzc.bysj.domain.Process;
 import cn.njxzc.bysj.service.IPaperService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,5 +125,17 @@ public class PaperServiceImpl implements IPaperService {
     @Override
     public void confirmFalseByPid(Integer pid) throws Exception {
         paperDao.confirmFalseByPid(pid);
+    }
+
+    @Override
+    public List<Process> findProcess(Integer page, Integer limit) {
+        //pageNum是页码值  pageSize是每页显示条数
+        PageHelper.startPage(page, limit);
+        return paperDao.findProcess();
+    }
+
+    @Override
+    public List<Process> exportProcess() {
+        return paperDao.findProcess();
     }
 }

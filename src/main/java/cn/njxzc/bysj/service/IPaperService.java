@@ -1,6 +1,7 @@
 package cn.njxzc.bysj.service;
 
 import cn.njxzc.bysj.domain.Paper;
+import cn.njxzc.bysj.domain.Process;
 
 import java.util.List;
 
@@ -41,4 +42,7 @@ public interface IPaperService {
 
     void confirmFalseByPid(Integer pid) throws Exception;
 
+    List<Process> findProcess(Integer page, Integer limit);
+
+    List<Process> exportProcess();
 }

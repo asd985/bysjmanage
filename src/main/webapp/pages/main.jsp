@@ -157,6 +157,43 @@
                         </div>
                     </div>
                     </security:authorize>
+                    <security:authorize access="hasAnyRole('STUDENT')">
+                        <div class="layui-col-md12">
+                            <div class="layui-card">
+                                <div class="layui-card-header"><i class="fa fa-warning icon"></i>个人信息</div>
+                                <div class="layui-card-body">
+                                    <div class="layuimini-main layui-top-box">
+                                        <div class="layui-row layui-col-space15">
+                                            <div class="layui-row contnet-message-body">
+                                                <div class="layui-col-xs12 layui-col-sm4 layui-col-md2 contnet-message-div "><strong>选题学生：</strong><span class="name">${user.name}</span></div>
+                                                <div class="layui-col-xs12 layui-col-sm4 layui-col-md2 contnet-message-div "><strong>学生学号：</strong><span class="code">${user.username}</span></div>
+                                                <div class="layui-col-xs12 layui-col-sm4 layui-col-md2 contnet-message-div "><strong>学院：</strong><span class="colloge">${user.college}</span></div>
+                                                <div class="layui-col-xs12 layui-col-sm4 layui-col-md2 contnet-message-div "><strong>学生专业：</strong><span class="major">${user.major}</span></div>
+                                                <div class="layui-col-xs12 layui-col-sm4 layui-col-md2 contnet-message-div "><strong>班级：</strong><span class="grade">${user.className}</span></div>
+                                            </div>
+                                            <%--<div class="layui-col-md2">
+                                                <div class="col-xs-4 col-md-2">
+                                                    <div class="panel layui-bg-cyan">
+                                                        <div class="panel-body">
+                                                            <div class="panel-title">
+                                                                <span class="label pull-right layui-bg-blue">实时</span>
+                                                                <h2>论文选题</h2>
+                                                            </div>
+                                                            <div class="panel-content">
+                                                                <h3>总学生数：<%=((Map<String, Map<Integer, StatusCount>>)request.getAttribute("count")).get("paper").get(4).getCount()%></h3>
+                                                                <h3>已完成选题：<%=((Map<String, Map<Integer, StatusCount>>)request.getAttribute("count")).get("paper").get(3).getCount()%></h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>--%>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </security:authorize>
                     <div class="layui-col-md12">
                         <div class="layui-card">
                             <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>最新公告</div>

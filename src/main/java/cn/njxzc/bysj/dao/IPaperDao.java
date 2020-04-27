@@ -1,6 +1,7 @@
 package cn.njxzc.bysj.dao;
 
 import cn.njxzc.bysj.domain.Paper;
+import cn.njxzc.bysj.domain.Process;
 import cn.njxzc.bysj.domain.StatusCount;
 import org.apache.ibatis.annotations.*;
 
@@ -171,4 +172,17 @@ public interface IPaperDao {
             "UNION " +
             "select IFNULL(status,3),COUNT(*) from paper where `status`=3 ")
     Map<Integer, StatusCount> getCount() throws Exception;
+
+    @Select("SELECT " +
+            "p.paperName,p.studentid,u.name AS studentName,u.college,u.major,u.classname,p.teacherid,u2.name AS teacherName,task.status AS taskStatus,report.status AS reportStatus,midcheck.status AS checkStatus,paperfirst.status AS paperfirstStatus,paperend.status AS paperendStatus " +
+            "FROM " +
+            "paper AS p INNER JOIN user AS u ON p.studentid = u.username " +
+            "INNER JOIN user AS u2 ON p.teacherid = u2.username " +
+            "LEFT JOIN task ON task.pid=p.pid " +
+            "LEFT JOIN report ON report.pid=p.pid " +
+            "LEFT JOIN midcheck ON midcheck.pid=p.pid " +
+            "LEFT JOIN paperfirst ON paperfirst.pid=p.pid " +
+            "LEFT JOIN paperend ON paperend.pid=p.pid")
+    List<Process> findProcess();
+
 }
