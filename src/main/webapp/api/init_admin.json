@@ -58,6 +58,12 @@
           "href": "pages/notice.jsp",
           "icon": "fa fa-circle-o",
           "target": "_self"
+        },
+        {
+          "title": "用户查询",
+          "href": "pages/user-list.jsp",
+          "icon": "fa fa-circle-o",
+          "target": "_self"
         }
       ]
     },

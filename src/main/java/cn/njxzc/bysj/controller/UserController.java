@@ -31,7 +31,6 @@ public class UserController {
     private IUserService userService;
 
     //查询所有用户
-    @RolesAllowed({"ADMIN"})
     @RequestMapping("/findAll.do")
     @ResponseBody
     public TableResponse findAll(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "10") Integer limit) throws Exception{
