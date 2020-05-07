@@ -83,10 +83,16 @@ select IFNULL(status,2),count(*) as count from report where `status`=2
 */
     //@Select("select `status`,count(*) as count from report group by status")
     @MapKey("status")
-    @Select("select IFNULL(status,0) as status,count(*) as count from report where `status`=0 " +
+    @Select("select IFNULL(t1.status,0) as status,count(*) as count " +
+            "from report as t1 left join paper as t2 on t1.pid=t2.pid " +
+            "where t1.status=0 and t2.teacherId is not NULL and t2.studentId is not NULL " +
             "UNION " +
-            "select IFNULL(status,1),count(*) as count from report where `status`=1 " +
+            "select IFNULL(t1.status,1),count(*) as count " +
+            "from report as t1 left join paper as t2 on t1.pid=t2.pid " +
+            "where t1.status=1 and t2.teacherId is not NULL and t2.studentId is not NULL " +
             "UNION " +
-            "select IFNULL(status,2),count(*) as count from report where `status`=2 ")
+            "select IFNULL(t1.status,2),count(*) as count " +
+            "from report as t1 left join paper as t2 on t1.pid=t2.pid " +
+            "where t1.status=2 and t2.teacherId is not NULL and t2.studentId is not NULL ")
     Map<Integer,StatusCount> getCount() throws Exception;
 }

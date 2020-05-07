@@ -54,6 +54,11 @@ public class ConfigController {
         }
     }
 
+    /**
+     * 首页信息
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/main.do")
     public ModelAndView main() throws Exception{
         ModelAndView mv = new ModelAndView();

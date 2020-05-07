@@ -60,6 +60,7 @@
                                                         <div class="panel-content">
                                                             <h3>总学生数：<%=((Map<String, Map<Integer, StatusCount>>)request.getAttribute("count")).get("paper").get(4).getCount()%></h3>
                                                             <h3>已完成选题：<%=((Map<String, Map<Integer, StatusCount>>)request.getAttribute("count")).get("paper").get(3).getCount()%></h3>
+                                                            <h3>未完成选题：<%=((Map<String, Map<Integer, StatusCount>>)request.getAttribute("count")).get("paper").get(4).getCount()-((Map<String, Map<Integer, StatusCount>>)request.getAttribute("count")).get("paper").get(3).getCount()%></h3>
                                                         </div>
                                                     </div>
                                                 </div>

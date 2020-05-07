@@ -53,10 +53,27 @@
             <input type="text" name="className" placeholder="请输入班级" value="${user.className}" class="layui-input">
         </div>
     </div>
-    <div class="layui-form-item">
+    <%--<div class="layui-form-item">
         <label class="layui-form-label required">角色</label>
         <div class="layui-input-block">
             <input type="text" name="role" lay-verify="required" lay-reqtext="角色不能为空" placeholder="请输入角色" value="${user.role}" class="layui-input">
+        </div>
+    </div>--%>
+    <div class="layui-form-item">
+        <label class="layui-form-label">角色</label>
+        <div class="layui-input-block">
+            <select name="role" lay-verify="required">
+                <option value="" ></option>
+                <option value="STUDENT" >学生</option>
+                <option value="TEACHER" >教师</option>
+                <option value="ADMIN" >管理员</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <textarea name="remark" placeholder="请输入备注信息，如QQ、擅长领域" class="layui-textarea" >${user.remark}</textarea>
         </div>
     </div>
     <div class="layui-form-item">
