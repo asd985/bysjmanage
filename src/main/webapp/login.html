@@ -48,22 +48,43 @@
             </div>
             <div>
                 <i class="layui-icon layui-icon-password admin-icon"></i>
-                <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input admin-input" value="admin">
+                <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input admin-input admin-input-verify" value="admin">
             </div>
-            <div>
+            <!--<div>
                 <input type="text" name="captcha" placeholder="请输入验证码" autocomplete="off" class="layui-input admin-input admin-input-verify" value="xszg">
                 <img class="admin-captcha" width="90" height="30" src="./images/captcha.jpg">
+            </div>-->
+            <div >
+                <div class="layui-input-block " id="slider">
+                </div>
             </div>
             <button class="layui-btn admin-button" lay-submit="" lay-filter="login">登 陆</button>
         </form>
     </div>
 </div>
 <script src="./lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="./js/lay-module/sliderVerify/sliderVerify.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.config({
+        base: './js/lay-module/sliderVerify/'
+    }).extend({
+        sliderVerify: 'sliderVerify'
+    });
+</script>
 <script>
-    layui.use(['form'], function () {
+    layui.use(['form','sliderVerify'], function () {
         var form = layui.form,
             layer = layui.layer,
             $ = layui.jquery;
+
+        var sliderVerify = layui.sliderVerify,
+            form = layui.form;
+        var slider = sliderVerify.render({
+            elem: '#slider',
+            onOk: function(){//当验证通过回调
+                layer.msg("滑块验证通过");
+            }
+        })
 
         // 登录过期的时候，跳出ifram框架
         if (top.location != self.location) top.location = self.location;
@@ -79,25 +100,30 @@
                 layer.msg('密码不能为空');
                 return false;
             }
-            if (data.captcha == '') {
+            /*if (data.captcha == '') {
                 layer.msg('验证码不能为空');
                 return false;
+            }*/
+            if(slider.isOk()){//用于表单验证是否已经滑动成功
+                $.ajax({
+                    type:"POST",
+                    url:"./login.do",
+                    //contentType: "application/json;charset=UTF-8", //必须这样写
+                    //dataType:"json",
+                    data:data,
+                    success:function () {
+                        layer.msg('登录成功', function (jqXHR) {
+                            window.location = './index.jsp';
+                        });
+                    },
+                    error:function () {
+                        layer.msg('登录失败！密码有误或账号被禁用！');
+                    }
+                });
+            }else{
+                layer.msg("请先通过滑块验证");
             }
-            $.ajax({
-                type:"POST",
-                url:"./login.do",
-                //contentType: "application/json;charset=UTF-8", //必须这样写
-                //dataType:"json",
-                data:data,
-                success:function () {
-                    layer.msg('登录成功', function (jqXHR) {
-                        window.location = './index.jsp';
-                    });
-                },
-                error:function () {
-                    layer.msg('登录失败！密码有误或账号被禁用！');
-                }
-            });
+
             return false;
         });
     });
