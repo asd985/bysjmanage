@@ -5,7 +5,6 @@ import cn.njxzc.bysj.domain.StatusCount;
 import cn.njxzc.bysj.domain.UserInfo;
 import cn.njxzc.bysj.service.IConfigService;
 import cn.njxzc.bysj.service.INoticeService;
-import cn.njxzc.bysj.service.IPaperService;
 import cn.njxzc.bysj.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
@@ -75,12 +74,5 @@ public class ConfigController {
         mv.addObject("count", count);
         mv.setViewName("main");
         return mv;
-    }
-
-    //清空redis缓存
-    @RequestMapping("/clear.do")
-    public String clear() throws Exception{
-        configService.clear();
-        return "redirect:/api/clear.json";
     }
 }

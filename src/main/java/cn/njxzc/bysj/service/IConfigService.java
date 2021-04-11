@@ -8,5 +8,4 @@ public interface IConfigService {
 
     Map<String, Map<Integer, StatusCount>> getCount() throws Exception;
 
-    void clear() throws Exception;
 }

@@ -4,7 +4,6 @@ import cn.njxzc.bysj.dao.*;
 import cn.njxzc.bysj.domain.StatusCount;
 import cn.njxzc.bysj.service.IConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,8 +26,6 @@ public class ConfigServiceImpl implements IConfigService {
     private IPaperEndDao paperEndDao;
     @Autowired
     private IPaperDao paperDao;
-    @Autowired
-    private RedisTemplate template;
 
 
     @Override
@@ -47,11 +44,5 @@ public class ConfigServiceImpl implements IConfigService {
         map.put("paperFirst", paperFirst);
         map.put("paperEnd", paperEnd);
         return map;
-    }
-
-    @Override
-    public void clear() throws Exception {
-        template.delete("Notice");
-        template.delete("Notices");
     }
 }

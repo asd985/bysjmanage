@@ -37,7 +37,6 @@ public class ReportController {
     private IReportService reportService;
 
     //列表
-    @RolesAllowed({"ADMIN"})
     @RequestMapping("/findAll.do")
     @ResponseBody
     public TableResponse FindAll(@RequestParam(name="page",required = true,defaultValue = "1") Integer page, @RequestParam(name = "limit",required = true,defaultValue = "10") Integer limit) throws Exception{
