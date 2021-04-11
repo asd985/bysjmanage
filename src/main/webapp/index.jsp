@@ -56,9 +56,6 @@ pageEncoding="UTF-8"%>
                 <li class="layui-nav-item" lay-unselect>
                     <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
                 </li>
-                <li class="layui-nav-item" lay-unselect>
-                    <a href="javascript:;" data-clear="清理" class="layuimini-clear"><i class="fa fa-trash-o"></i></a>
-                </li>
                 <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
                     <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
                 </li>
@@ -144,7 +141,6 @@ pageEncoding="UTF-8"%>
         var options = {
             //iniUrl: "api/init.json",    // 初始化接口
             iniUrl: "config/init.do",
-            clearUrl: "config/clear.do", // 缓存清理接口
             urlHashLocation: true,      // 是否打开hash定位
             bgColorDefault: 1,          // 主题默认配置
             multiModule: false,          // 是否开启多模块
@@ -159,20 +155,6 @@ pageEncoding="UTF-8"%>
             layer.msg('退出登录成功', function () {
                 window.location = '${pageContext.request.contextPath}/logout.do';
             });
-        });
-        $('.layuimini-clear').on("click", function () {
-            $.ajax({
-                type:"POST",
-                url:"${pageContext.request.contextPath}/config/clear.do",
-                success:function () {
-                    layer.msg('清理成功');
-                    return false;
-                },
-                error:function () {
-                    layer.msg('清理失败');
-                }
-            });
-
         });
     });
 </script>

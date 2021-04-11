@@ -50,44 +50,6 @@
       ]
     },
     {
-      "title": "过程管理",
-      "icon": "fa fa-edit",
-      "href": "",
-      "target": "_self",
-      "child": [
-        {
-          "title": "任务书",
-          "href": "pages/process-task-student.jsp",
-          "icon": "fa fa-circle-o",
-          "target": "_self"
-        },
-        {
-          "title": "开题报告",
-          "href": "pages/process-report-student.jsp",
-          "icon": "fa fa-circle-o",
-          "target": "_self"
-        },
-        {
-          "title": "中期检查",
-          "href": "pages/process-check-student.jsp",
-          "icon": "fa fa-circle-o",
-          "target": "_self"
-        },
-        {
-          "title": "论文初稿",
-          "href": "pages/process-paperfirst-student.jsp",
-          "icon": "fa fa-circle-o",
-          "target": "_self"
-        },
-        {
-          "title": "论文终稿",
-          "href": "pages/process-paperend-student.jsp",
-          "icon": "fa fa-circle-o",
-          "target": "_self"
-        }
-      ]
-    },
-    {
       "title": "个人信息",
       "icon": "fa fa-sticky-note-o",
       "href": "",
